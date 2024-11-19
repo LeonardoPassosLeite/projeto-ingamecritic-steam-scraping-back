@@ -1,0 +1,64 @@
+# Arquivos de Build
+bin/
+obj/
+*.dll
+*.pdb
+
+# Logs e Dumps
+*.log
+*.error.log
+*.vspscc
+
+# Configuração do Visual Studio
+.vscode/
+.vs/
+launchSettings.json
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos do usuário
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Configurações temporárias do Rider/JetBrains
+.idea/
+*.iml
+
+# Arquivos gerados pelo NuGet
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+*.snupkg
+
+# Arquivos gerados durante o desenvolvimento
+*.cache
+*.tmp
+*.bak
+*.swp
+*.log
+
+# Configuração do appsettings
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Arquivos de Teste
+TestResults/
+
+# Informações de cobertura de código
+coverage/
+
+# Arquivos de Deploy
+publish/
+out/
+
+# Arquivos de dependências locais
+packages/
+*.props
+
+# Sistema operacional
+desktop.ini
