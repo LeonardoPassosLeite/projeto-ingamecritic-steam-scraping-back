@@ -22,9 +22,8 @@ namespace SteamChartsAPI.Controllers
             {
                 var games = await _steamChartsScraper.GetTopGamesAsync();
                 if (games.Count == 0)
-                {
                     return NotFound("Nenhum jogo encontrado no SteamCharts.");
-                }
+                
                 return Ok(games);
             }
             catch (Exception ex)
