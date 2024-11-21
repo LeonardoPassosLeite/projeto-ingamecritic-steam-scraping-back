@@ -8,11 +8,11 @@ namespace SteamChartsAPI.Controllers
     [Route("api/[controller]")]
     public class SteamChartsController : ControllerBase
     {
-        private readonly SteamChartsScraper _scraper;
+        private readonly SteamChartsScraper _steamChartsScraper;
 
-        public SteamChartsController(SteamChartsScraper scraper)
+        public SteamChartsController(SteamChartsScraper steamChartsScraper)
         {
-            _scraper = scraper;
+            _steamChartsScraper = steamChartsScraper;
         }
 
         [HttpGet("top-games")]
@@ -20,7 +20,7 @@ namespace SteamChartsAPI.Controllers
         {
             try
             {
-                var games = await _scraper.GetTopGamesAsync();
+                var games = await _steamChartsScraper.GetTopGamesAsync();
                 if (games.Count == 0)
                 {
                     return NotFound("Nenhum jogo encontrado no SteamCharts.");
