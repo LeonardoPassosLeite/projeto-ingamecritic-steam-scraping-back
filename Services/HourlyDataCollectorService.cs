@@ -14,21 +14,7 @@ public class HourlyDataCollectorService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var now = DateTime.UtcNow;
-        var nextRun = now.AddHours(1).Date.AddHours(now.Hour + 1);
-        var delay = nextRun - now;
-
-        _logger.LogInformation("Aguardando {DelayMinutes} minutos até a primeira execução às {NextRun}.", delay.TotalMinutes, nextRun);
-
-        try
-        {
-            await Task.Delay(delay, stoppingToken);
-        }
-        catch (OperationCanceledException)
-        {
-            _logger.LogInformation("O serviço foi interrompido antes da primeira execução.");
-            return;
-        }
+        _logger.LogInformation("Serviço iniciado. Executando coleta de dados a cada 1 minuto para fins de teste.");
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -52,13 +38,12 @@ public class HourlyDataCollectorService : BackgroundService
                 _logger.LogError(ex, "Erro inesperado durante a coleta de dados.");
             }
 
-            now = DateTime.UtcNow;
-            nextRun = now.AddHours(1).Date.AddHours(now.Hour + 1);
-            delay = nextRun - now;
+            // Aguarda 1 minuto antes de executar novamente
+            var delay = TimeSpan.FromMinutes(1);
 
             try
             {
-                _logger.LogInformation("Aguardando {DelayMinutes} minutos até a próxima execução às {NextRun}.", delay.TotalMinutes, nextRun);
+                _logger.LogInformation("Aguardando 1 minuto para a próxima execução.");
                 await Task.Delay(delay, stoppingToken);
             }
             catch (OperationCanceledException)
